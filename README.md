@@ -90,3 +90,14 @@ where taxi_zone_data."LocationID" = 263;
 Please see the main.tf in the terrademo1 folder
 
 terraform init, terraform apply -auto-approve, terraform destroy
+
+
+
+
+
+
+
+
+<img width="1154" height="699" alt="image" src="https://github.com/user-attachments/assets/83775356-86c5-40e1-a1e3-aa482c10f806" />
+<img width="1160" height="332" alt="image" src="https://github.com/user-attachments/assets/c48c186b-9036-4e3e-8880-b4d09fc1d136" />
+
