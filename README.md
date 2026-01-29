@@ -1,5 +1,6 @@
 # de-camp-docker-workshop
-First Module & Homework in the DE Zoomcamp series
+
+## First Module & Homework in the DE Zoomcamp Series
 
 Answers below -
 
@@ -93,11 +94,76 @@ terraform init, terraform apply -auto-approve, terraform destroy
 
 
 
+## Second Module & Homework in the DE Zoomcamp Series
 
 
-
-
-
+*Backfilling the data for the specified time period: From 1/1/2021 to 7/31/2021 for the yellow and green taxi data:
+<br>
+<br>
 <img width="1154" height="699" alt="image" src="https://github.com/user-attachments/assets/83775356-86c5-40e1-a1e3-aa482c10f806" />
 <img width="1160" height="332" alt="image" src="https://github.com/user-attachments/assets/c48c186b-9036-4e3e-8880-b4d09fc1d136" />
+<br>
+<br>
+<br>
+1. **134.5MB**
+   <img width="1326" height="116" alt="image" src="https://github.com/user-attachments/assets/5ab33953-a7aa-4011-a483-ce48050803ed" />
+<br>
+<br>
+<br>
+2. green_tripdata_2020-04.csv
+   <img width="1114" height="67" alt="image" src="https://github.com/user-attachments/assets/7b10be19-ba88-4820-b178-ce96fcae5846" />
+<br>
+<br>
+<br>
+3. 24,648,499
+<br>
+   --Rows for the Yellow Taxi data in 2020
+<br>
+	SELECT COUNT(*) FROM `kestra-learning-485617.zoomcamp.yellow_tripdata`
+	WHERE filename >= "yellow_tripdata_2020-01.csv"
+	AND filename < "yellow_tripdata_2021-01.csv"
+<br>
+<br>
+<br>
+4. 1734051
+<br>
+--Rows for the Green Taxi data in 2020
+<br>
+SELECT COUNT(*) FROM `kestra-learning-485617.zoomcamp.green_tripdata`
+WHERE filename >= "green_tripdata_2020-01.csv"
+AND filename < "green_tripdata_2021-01.csv"
+<br>
+<br>
+<br>
+5. 1925152
+<br>
+<img width="621" height="553" alt="image" src="https://github.com/user-attachments/assets/b73ad18a-3e8a-48ff-9fa8-d27fd1d9ba8d" />
+<br>
+<br>
+<br>
+6. Add a timezone property set to America/New_York in the Schedule trigger configuration
+<br>
+triggers:
+<br>
+<br>
+<p>- id: green_schedule</p>  
+<p>type: io.kestra.plugin.core.trigger.Schedule</p>  
+<p>cron: "0 9 1 * *"</p>  
+<p>inputs:</p>  
+<p>taxi: green</p>
+<br>
+<br>
+<p>- id: yellow_schedule</p>
+<p>type: io.kestra.plugin.core.trigger.Schedule</p>
+<p>cron: "0 10 1 * *"</p>
+<p>inputs:</p>
+<p>taxi: yellow</p>
+<br>
+<br>
+<p>- id: new_york_schedule</p>
+<p>type: io.kestra.plugin.core.trigger.Schedule</p>
+<p>cron: "0 11 1 * *"</p>
+<p>timezone: America/New_York</p>
+
+
 
