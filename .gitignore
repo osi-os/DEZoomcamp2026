@@ -256,3 +256,6 @@ __marimo__/
 
 # Data files
 *.parquet
+
+*.env
+*.env_encoded
