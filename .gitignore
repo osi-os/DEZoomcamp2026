@@ -265,3 +265,5 @@ target/
 dbt_packages/
 logs/
 # end dbt Cloud content
+dbt_internal_packages/
+.DS_Store
