@@ -28,5 +28,5 @@ select
     -- cast(airport_fee as int) as airport_fee,
     cast(payment_type as int) as payment_type
 
-from {{ source('bigquery_data', 'yellow_taxidata')  }}
+from {{ source('bigquery_data', 'yellow_tripdata')  }}
 where vendorid is not null

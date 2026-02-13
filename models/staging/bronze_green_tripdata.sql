@@ -27,5 +27,5 @@ select
     cast(payment_type as int) as payment_type,
     cast(congestion_surcharge as int) as congestion_surcharge
 
-from {{ source('bigquery_data', 'green_taxidata')  }}
+from {{ source('bigquery_data', 'green_tripdata')  }}
 where vendorid is not null
