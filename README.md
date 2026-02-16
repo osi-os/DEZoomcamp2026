@@ -230,3 +230,56 @@ WHERE tpep_dropoff_datetime >= '2024-03-01'
 9.
 SELECT * FROM `homework3.yellow_taxi_data_2024_reg`
 -- 2.72 GB because the query has to run through every column in the table to extract every entry
+
+
+## Fourth Module & Homework in the DE Zoomcamp Series
+
+1.
+dbt run --select int_trips_unioned
+
+The above means that only the int_trips_unioned model will be built.
+
+2.
+columns:
+  - name: payment_type
+    data_tests:
+      - accepted_values:
+          arguments:
+            values: [1, 2, 3, 4, 5]
+            quote: false
+
+Your model fct_trips has been running successfully for months. A new value 6 now appears in the source data.
+
+When I run dbt test --select fct_trips, dbt will fail the test, returning a non-zero exit code.
+
+3.
+After running your dbt project, the count of records in the fct_monthly_zone_revenue model:
+
+select COUNT(*) from `dbt_osios.fct_monthly_zone_revenue`
+12184
+
+4.
+Using the fct_monthly_zone_revenue table, find the pickup zone with the highest total revenue (revenue_monthly_total_amount) for Green taxi trips in 2020.
+
+SELECT 
+  pickup_zone,
+  SUM(revenue_monthly_total_amount) AS revenue_2020
+FROM `dbt_osios.fct_monthly_zone_revenue`
+WHERE revenue_month >= '2020-01-01' AND revenue_month < '2021-01-01' AND service_type = 'Green'
+GROUP BY pickup_zone
+ORDER BY revenue_2020 DESC
+
+East Harlem North
+
+5.
+Using the fct_monthly_zone_revenue table, what is the total number of trips (total_monthly_trips) for Green taxis in October 2019?
+
+SELECT
+  SUM(total_monthly_trips) AS oct2019_trips
+FROM `dbt_osios.fct_monthly_zone_revenue`
+WHERE revenue_month = '2019-10-01' AND service_type = 'Green'
+
+384624
+
+6.
+
