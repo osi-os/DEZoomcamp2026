@@ -288,5 +288,7 @@ Create a staging model for the For-Hire Vehicle (FHV) trip data for 2019.
 
 What is the count of records in stg_fhv_tripdata?
 
+See dbt_hwsetup/models/staging/stg_fhv_tripdata.sql for the model.
+
 SELECT COUNT(*) FROM `dbt_osios.stg_fhv_tripdata`;
 43244693
