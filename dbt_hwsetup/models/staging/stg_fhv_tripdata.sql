@@ -16,7 +16,7 @@ renamed as (
         cast(dropOff_datetime as timestamp) as dropoff_datetime
 
     from source
-    -- Filter out records with null vendor_id (data quality requirement)
+    -- Filter out records with null dispatch_num (data quality requirement)
     where dispatching_base_num is not null
 )
 
