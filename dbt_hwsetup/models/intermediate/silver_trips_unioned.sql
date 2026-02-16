@@ -1,10 +1,10 @@
 with 
 green_tripdata as (
-    select * from {{ ref('bronze_green_tripdata')}}
+    select * from {{ ref('stg_green_tripdata')}}
 ),
 
 yellow_tripdata as (
-    select * from {{ ref('bronze_yellow_tripdata')}}
+    select * from {{ ref('stg_yellow_tripdata')}}
 ),
 
 trips_unioned as (
