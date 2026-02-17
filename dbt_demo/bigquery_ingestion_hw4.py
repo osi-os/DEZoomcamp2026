@@ -34,7 +34,7 @@ bucket = client.bucket(BUCKET_NAME)
 
 def download_file(month):
     url = f"{BASE_URL}{month}.csv.gz"
-    file_path = os.path.join(DOWNLOAD_DIR, f"yellow_tripdata_2020-{month}.csv")
+    file_path = os.path.join(DOWNLOAD_DIR, f"fhv_tripdata_2019-{month}.csv")
 
     try:
         print(f"Downloading {url}...")

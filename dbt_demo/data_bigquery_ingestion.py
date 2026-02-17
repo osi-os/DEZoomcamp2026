@@ -7,7 +7,7 @@ from google.api_core.exceptions import NotFound, Forbidden
 import time
 
 
-BUCKET_NAME = "dbt_demo_bucket4"
+BUCKET_NAME = "dbt_homework4"
 
 # If you authenticated through the GCP SDK you can comment out these two lines
 CREDENTIALS_FILE = "service-account.json"
