@@ -282,4 +282,13 @@ WHERE revenue_month = '2019-10-01' AND service_type = 'Green'
 384624
 
 6.
+Create a staging model for the For-Hire Vehicle (FHV) trip data for 2019.
+  Filter out records where dispatching_base_num IS NULL
+  Rename fields to match your project's naming conventions (e.g., PUlocationID → pickup_location_id)
 
+What is the count of records in stg_fhv_tripdata?
+
+See dbt_hwsetup/models/staging/stg_fhv_tripdata.sql for the model.
+
+SELECT COUNT(*) FROM `dbt_osios.stg_fhv_tripdata`;
+43244693
