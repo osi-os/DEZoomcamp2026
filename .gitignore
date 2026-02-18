@@ -267,3 +267,8 @@ logs/
 # end dbt Cloud content
 dbt_internal_packages/
 .DS_Store
+
+.bruin.yml
+logs/runs
+logs/*.log
+*.py[cod]
