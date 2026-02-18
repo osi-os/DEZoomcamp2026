@@ -272,3 +272,4 @@ dbt_internal_packages/
 logs/runs
 logs/*.log
 *.py[cod]
+*.db
