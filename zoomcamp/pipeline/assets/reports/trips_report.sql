@@ -23,11 +23,11 @@ depends:
 materialization:
   type: table
   # suggested strategy: time_interval
-  # strategy: time_interval
+  strategy: time_interval
   # set to your report's date column (must match staging incremental_key)
-  # incremental_key: pickup_datetime
+  incremental_key: pickup_datetime
   # set to `date` or `timestamp`
-  # time_granularity: timestamp
+  time_granularity: timestamp
 
 # Define report columns + primary key(s) at your chosen level of aggregation.
 # Primary key is the combination of date + taxi_type + payment_type_name (aggregation grain).
@@ -99,17 +99,17 @@ columns:
 -- - GROUP BY your dimension + date columns
 
 SELECT
-    CAST(pickup_datetime AS DATE)   AS pickup_date,
+    CAST(pickup_datetime AS DATE)          AS pickup_date,
     taxi_type,
     COALESCE(payment_type_name, 'unknown') AS payment_type_name,
-    COUNT(*)                        AS total_trips,
-    SUM(passenger_count)            AS total_passengers,
-    ROUND(SUM(trip_distance), 2)    AS total_distance_miles,
-    ROUND(SUM(fare_amount), 2)      AS total_fare_amount,
-    ROUND(SUM(tip_amount), 2)       AS total_tip_amount,
-    ROUND(SUM(total_amount), 2)     AS total_revenue,
-    ROUND(AVG(trip_distance), 2)    AS avg_trip_distance_miles,
-    ROUND(AVG(fare_amount), 2)      AS avg_fare_amount
+    COUNT(*)                               AS total_trips,
+    SUM(passenger_count)                   AS total_passengers,
+    ROUND(SUM(trip_distance), 2)           AS total_distance_miles,
+    ROUND(SUM(fare_amount), 2)             AS total_fare_amount,
+    ROUND(SUM(tip_amount), 2)              AS total_tip_amount,
+    ROUND(SUM(total_amount), 2)            AS total_revenue,
+    ROUND(AVG(trip_distance), 2)           AS avg_trip_distance_miles,
+    ROUND(AVG(fare_amount), 2)             AS avg_fare_amount
 FROM staging.trips
 WHERE pickup_datetime >= '{{ start_datetime }}'
   AND pickup_datetime < '{{ end_datetime }}'

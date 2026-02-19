@@ -9,7 +9,6 @@ name: ingestion.trips
 type: python
 
 # Pick a Python image version (Bruin runs Python in isolated environments).
-# Example: python:3.11
 image: python:3.11
 
 # Set the connection.

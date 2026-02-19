@@ -273,3 +273,4 @@ logs/runs
 logs/*.log
 *.py[cod]
 *.db
+logs/queries

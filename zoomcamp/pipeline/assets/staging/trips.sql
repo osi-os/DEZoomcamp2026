@@ -21,7 +21,6 @@ depends:
 # Choose time-based incremental processing if the dataset is naturally time-windowed.
 # - This module expects you to use `time_interval` to reprocess only the requested window.
 materialization:
-  # What is materialization?
   # Materialization tells Bruin how to turn your SELECT query into a persisted dataset.
   # Docs: https://getbruin.com/docs/bruin/assets/materialization
   #
@@ -30,13 +29,6 @@ materialization:
   # - view: persisted view (if the platform supports it)
   type: table
   # set a materialization strategy.
-  # Docs: https://getbruin.com/docs/bruin/assets/materialization
-  # suggested strategy: time_interval
-  #
-  # Incremental strategies (what does "incremental" mean?):
-  # Incremental means you update only part of the destination instead of rebuilding everything every run.
-  # In Bruin, this is controlled by `strategy` plus keys like `incremental_key` and `time_granularity`.
-  #
   # Common strategies you can choose from (see docs for full list):
   # - create+replace (full rebuild)
   # - truncate+insert (full refresh without drop/create)

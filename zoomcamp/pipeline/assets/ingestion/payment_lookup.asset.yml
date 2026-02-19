@@ -5,31 +5,29 @@
 # Seed assets let you load CSV files directly into your data platform.
 # This is useful for small, static reference/lookup data.
 
-# TODO: Set the asset name (recommended: ingestion.payment_lookup).
+# Asset name follows the ingestion schema convention.
 name: ingestion.payment_lookup
 
-# TODO: Set platform type.
+# Platform type for DuckDB seed ingestion.
 # Docs: https://getbruin.com/docs/bruin/assets/seed
-# suggested type: duckdb.seed
 type: duckdb.seed
 
 # Path to the CSV file (relative to this .asset.yml file).
-# Can also be a URL: https://example.com/data.csv
 parameters:
   path: payment_lookup.csv
 
-# TODO: Define columns and add quality checks.
-# - Lookups should have a stable primary key.
+# Columns with quality checks.
+# - payment_type_id is the primary key used to JOIN with staging.trips.
 columns:
   - name: payment_type_id
     type: integer
-  # description: TODO
+    description: "Numeric code identifying the payment method"
     primary_key: true
     checks:
       - name: not_null
       - name: unique
   - name: payment_type_name
     type: string
-  # description: TODO
+    description: "Human-readable payment method label (e.g. credit_card, cash)"
     checks:
       - name: not_null
