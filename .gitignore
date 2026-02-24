@@ -274,3 +274,6 @@ logs/*.log
 *.py[cod]
 *.db
 logs/queries
+*.mdc
+.cursor/
+.dlt/
