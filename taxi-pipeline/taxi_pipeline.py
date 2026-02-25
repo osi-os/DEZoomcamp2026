@@ -25,8 +25,7 @@ def nyc_taxi_rest_api_source():
                         "type": "page_number",
                         "base_page": 1,
                         "page_param": "page",
-                        # Avoid relying on a `total` field in the response:
-                        # cap the maximum page index and stop when an empty page is returned.
+                        "total_path": None,
                         "maximum_page": 100000,
                         "stop_after_empty_page": True,
                     },
