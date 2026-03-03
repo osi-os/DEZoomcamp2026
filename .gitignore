@@ -256,6 +256,9 @@ __marimo__/
 
 # Data files
 *.parquet
+*.csv.gz
+*.csv
+fhvhv/
 
 *.env
 *.env_encoded
