@@ -280,3 +280,4 @@ logs/queries
 *.mdc
 .cursor/
 .dlt/
+*.crc
