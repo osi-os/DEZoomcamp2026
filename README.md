@@ -347,3 +347,52 @@ variables:
 
 3. What is the total amount of money generated in tips?
   $6,063.41
+
+## Sixth Module & Howmework in the DE Zoomcamp Series
+
+1. Spark.version output is 4.1.1 (pyspark --version)
+
+2. Average size of the Yellow November 2025 partitions is 25MB
+
+  df = spark.read \
+      .option("header", "true") \
+      .parquet('yellow_tripdata_2025-11.parquet') \
+      .repartition(4)
+
+  df.write.parquet('hw6_output/')
+
+  import os
+  for f in os.listdir('hw6_output/'):
+      if f.endswith('.parquet'):
+          size_mb = os.path.getsize(f'output/{f}') / (1024 * 1024)
+          print(f"{f}: {size_mb:.2f} MB")
+
+3. 162,604: Taxi trips on 11/15
+
+  from pyspark.sql.functions import col
+
+  df.filter(
+      (col("tpep_pickup_datetime") >= "2025-11-15 00:00:00") & 
+      (col("tpep_pickup_datetime") < "2025-11-16 00:00:00")
+  ).count()
+
+4. 90.6 is the longest trip in terms of hours
+  from pyspark.sql.functions import max, unix_timestamp
+
+  df.withColumn(
+      "trip_hours",
+      (unix_timestamp("tpep_dropoff_datetime") - unix_timestamp("tpep_pickup_datetime")) / 3600
+  ).orderBy(col("trip_hours").desc()).select("tpep_pickup_datetime", "tpep_dropoff_datetime", "trip_hours").show(1)
+
+5. Spark's User Interface shows the application's dashboard on localhost:4040
+
+6. The least frequent pickup zones are Governer's/Ellis/Liberty Island & Arden Heights
+
+    spark.sql("""
+      SELECT z.Zone, COUNT(*) as cnt
+      FROM yellow y
+      JOIN zones z ON y.PULocationID = z.LocationID
+      GROUP BY z.Zone
+      ORDER BY cnt ASC
+      LIMIT 10
+  """).show(truncate=False)
